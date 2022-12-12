@@ -21,7 +21,7 @@ public class ApprenantController {
     @Autowired
     private ApprenantService apprenantService;
 
-    @GetMapping(value = "/getAllApprenant", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/getAllApprenants", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<String> getAllApprenant() {
         Gson gson = new Gson();
         List<Apprenant> apprenants = apprenantService.listApprenant();

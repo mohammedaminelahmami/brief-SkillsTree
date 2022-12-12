@@ -16,13 +16,13 @@ public class Referenciel {
     @Column(name = "name")
     private String name;
 
-    @ManyToMany
-    @JoinTable(
-        name = "table_apprenant_referenciel_assoc",
-        joinColumns = @JoinColumn(name = "id_referenciel"),
-        inverseJoinColumns = @JoinColumn(name = "id_apprenant")
-    )
-    private List<Apprenant> apprenants;
+//    @ManyToMany
+//    @JoinTable(
+//        name = "table_apprenant_referenciel_competence_assoc",
+//        joinColumns = @JoinColumn(name = "id_referenciel"),
+//        inverseJoinColumns = @JoinColumn(name = "id_apprenant")
+//    )
+//    private List<Apprenant> apprenants;
 
     @OneToMany(mappedBy = "referenciel")
     private List<Competence> competences;

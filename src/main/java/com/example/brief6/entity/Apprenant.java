@@ -8,11 +8,11 @@ import java.util.List;
 @Table(name = "Apprenant", catalog = "skillstree")
 public class Apprenant extends User{
 
-    @ManyToMany
-    @JoinTable(
-        name = "table_apprenant_referenciel_assoc",
-        joinColumns = @JoinColumn(name = "id_apprenant"),
-        inverseJoinColumns = @JoinColumn(name = "id_referenciel")
-    )
-    private List<Referenciel> referenciels;
+//    @ManyToMany
+//    @JoinTable(
+//        name = "table_apprenant_referenciel_competence_assoc",
+//        joinColumns = @JoinColumn(name = "id_apprenant"),
+//        inverseJoinColumns = @JoinColumn(name = "id_referenciel")
+//    )
+//    private List<Referenciel> referenciels;
 }

@@ -25,6 +25,10 @@ public abstract class User {
     @Column(name = "password")
     private String password;
 
+    @Basic
+    @Column(name = "img")
+    private String img;
+
     public int getId() {
         return id;
     }
@@ -63,5 +67,13 @@ public abstract class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
     }
 }
