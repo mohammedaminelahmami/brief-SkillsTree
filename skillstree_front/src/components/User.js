@@ -1,22 +1,21 @@
-import React, { useState } from 'react'
-import apprenant1 from "../assets/imgs/apprenant/apprenant1.jpg";
+import React from "react";
 import "../css/style.css";
-import level1 from "../assets/imgs/lvl1.png"
-import level2 from "../assets/imgs/lvl2.png"
-import level3 from "../assets/imgs/lvl3.png"
+import level1 from "../assets/imgs/lvl1.png";
+import level2 from "../assets/imgs/lvl2.png";
+import level3 from "../assets/imgs/lvl3.png";
 
-const User = () => {
+const User = ({apprenant}) => {
     //
     return (
         <div className="w-24 h-24 user_an">
-            <div class="flip">
-                <div class="flip-content">
-                    <div class="flip-front">
-                        <img src={apprenant1} className="w-full rounded-md" />
-                        <p className="text-xs font-semibold">Jaouad&nbsp;DOUFARE</p>
+            <div className="flip">
+                <div className="flip-content">
+                    <div className="flip-front">
+                        <img src={`https://intranet.youcode.ma/storage/users/profile/thumbnail/${apprenant.img}`} className="w-full rounded-md" />
+                        <p className="text-xs font-semibold">{apprenant.nom}</p>
                     </div>
 
-                    <div class="flip-back">
+                    <div className="flip-back">
                         <div className="flex flex-col justify-center gap-1">
                             <div className="flex gap-4">
                                 <img src={level1} width="30" height="30" />
