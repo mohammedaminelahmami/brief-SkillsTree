@@ -26,5 +26,4 @@ public class Referenciel {
 
     @OneToMany(mappedBy = "referenciel")
     private List<Competence> competences;
-
 }
