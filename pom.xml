@@ -19,7 +19,7 @@
       <scope>test</scope>
     </dependency>
 
-    <!-- Add Spring Web and MVC dependencies -->
+    <!-- Add Spring framework and MVC dependencies -->
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-context</artifactId>
@@ -31,6 +31,13 @@
       <artifactId>spring-webmvc</artifactId>
       <version>6.0.2</version>
     </dependency>
+
+    <dependency>
+      <groupId>org.springframework.data</groupId>
+      <artifactId>spring-data-jpa</artifactId>
+      <version>3.0.0</version>
+    </dependency>
+
   <!-- Servlet -->
     <dependency>
       <groupId>jakarta.servlet</groupId>
@@ -47,6 +54,11 @@
       <groupId>com.google.code.gson</groupId>
       <artifactId>gson</artifactId>
       <version>2.10</version>
+    </dependency>
+    <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+      <version>8.0.30</version>
     </dependency>
   </dependencies>
   <build>
