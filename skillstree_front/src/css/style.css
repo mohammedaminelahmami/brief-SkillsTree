@@ -1,0 +1,34 @@
+.flip {
+    width: 100px;
+    height: 100px;
+    text-align: center;
+    perspective: 600px;
+}
+
+.flip-content {
+    width: 100%;
+    height: 100%;
+    transition: transform 0.7s;
+    transform-style: preserve-3d;
+}
+
+.flip:hover .flip-content {
+    transform: rotateY(180deg);
+    transition: transform 0.7s;
+}
+
+.flip-front,
+.flip-back {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    line-height: 150px;
+    backface-visibility: hidden;
+    color: black;
+}
+
+.flip-back {
+    transform: rotateY(180deg);
+    border: 1px solid rgb(75 85 99);
+    box-shadow: 3px 3px rgba(128, 128, 128, 0.815);
+}

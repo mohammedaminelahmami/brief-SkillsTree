@@ -1,30 +1,19 @@
 import './App.css';
-import {useEffect, useMemo} from "react";
-import axios from "axios";
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import TestView from "./views/TestView";
+import Login from "./views/login";
+import Home from './views/Home';
 
 function App() {
-
-  useMemo(()=>{
-    axios.get("http://localhost:8080/api/v1/getAll")
-      .then(res=>{
-          console.log(res)
-      })
-      .catch(error=>{
-          console.log(error)
-      })
-  }, [])
 
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={
-          <Home />
+        <Route index element={
+          <Login />
         }/>
-        
-        <Route path="/test" element={
-          <TestView />
+
+        <Route path="/home" element={
+          <Home />
         }/>
       </Routes>
     </BrowserRouter>

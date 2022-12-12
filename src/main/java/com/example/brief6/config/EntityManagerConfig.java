@@ -7,7 +7,7 @@ import jakarta.persistence.Persistence;
 public class EntityManagerConfig {
     private static EntityManager entityManager = null;
     static {
-        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("mypack");
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("skillstree");
         entityManager = entityManagerFactory.createEntityManager();
     }
     public static EntityManager getEntityManager(){
