@@ -9,21 +9,38 @@ import java.util.List;
 public class Referenciel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private int id;
+    @Column(name = "id_referenciel")
+    private int id_referenciel;
 
     @Basic
     @Column(name = "name")
     private String name;
 
-//    @ManyToMany
-//    @JoinTable(
-//        name = "table_apprenant_referenciel_competence_assoc",
-//        joinColumns = @JoinColumn(name = "id_referenciel"),
-//        inverseJoinColumns = @JoinColumn(name = "id_apprenant")
-//    )
-//    private List<Apprenant> apprenants;
-
-    @OneToMany(mappedBy = "referenciel")
+    @OneToMany(mappedBy = "referenciel", fetch = FetchType.EAGER)
     private List<Competence> competences;
+
+
+    public int getId_referenciel() {
+        return id_referenciel;
+    }
+
+    public void setId_referenciel(int id_referenciel) {
+        this.id_referenciel = id_referenciel;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public List<Competence> getCompetences() {
+        return competences;
+    }
+
+    public void setCompetences(List<Competence> competences) {
+        this.competences = competences;
+    }
 }

@@ -2,8 +2,6 @@ package com.example.brief6.entity;
 
 import jakarta.persistence.*;
 
-import java.util.List;
-
 @Entity
 @Table(name = "Apprenant", catalog = "skillstree")
 public class Apprenant extends User{
