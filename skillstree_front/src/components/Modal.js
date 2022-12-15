@@ -1,7 +1,40 @@
 import { Dialog, Transition } from '@headlessui/react'
-import { Fragment, useState } from 'react'
+import axios from 'axios';
+import { Fragment } from 'react'
+import ActivityIndicator from 'react-activity-indicator'
+import { useQuery } from 'react-query';
+import Dropdown from '../components/Dropdown'
 
-export default function  Modal({stateModal, onClose}) {
+export default function Modal({stateModal, onClose, apprenant}) {
+
+  const getAllReferenciels = async ()=>{
+    let response = await axios.get(`http://localhost:8080/api/referenciel/getAllReferenciels`);
+    return response.data;
+  }
+
+  const {data, status} = useQuery("getAllReferenciels", getAllReferenciels);
+
+  if(status === "loading")
+  {
+    return(
+      <div className="centerAbsoluteDiv">
+        <ActivityIndicator
+          number={5}
+          diameter={40}
+          borderWidth={1}
+          duration={300}
+          activeColor="#1d4ed8"
+          borderColor="white"
+          borderRadius="50%"
+        />
+      </div>
+      )
+  }
+
+  if(status === "error")
+  {
+    return <h1>Error...</h1>
+  }
   return (
     <>
       <Transition appear show={stateModal} as={Fragment}>
@@ -34,23 +67,10 @@ export default function  Modal({stateModal, onClose}) {
                     as="h3"
                     className="text-lg font-medium leading-6 text-gray-900"
                   >
-                    Payment successful
+                    {apprenant.prenom + " " + apprenant.nom}
                   </Dialog.Title>
-                  <div className="mt-2">
-                    <p className="text-sm text-gray-500">
-                      Your payment has been successfully submitted. We’ve sent
-                      you an email with all of the details of your order.
-                    </p>
-                  </div>
-
-                  <div className="mt-4">
-                    <button
-                      type="button"
-                      className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-                      onClick={onClose}
-                    >
-                      Got it, thanks!
-                    </button>
+                  <div className="m-4">
+                    <Dropdown refs={data} />
                   </div>
                 </Dialog.Panel>
               </Transition.Child>

@@ -6,21 +6,30 @@ import User from '../components/User';
 import ActivityIndicator from 'react-activity-indicator'
 import undraw1 from "../assets/imgs/undraw1.png"
 import Modal from "../components/Modal";
-import { useNavigate } from 'react-router-dom';
+
 const Home = () => {
 
   const [isOpen, setIsOpen] = useState(false);
+  const [obj, setObj] = useState({});
 
-  const clickHandler = ()=>{
+  const clickHandler = (apprenant)=>{
+    setObj({
+            id: apprenant.id,
+            nom: apprenant.nom,
+            prenom: apprenant.prenom,
+            email: apprenant.email,
+            password: apprenant.password,
+            img: apprenant.img
+          })
     setIsOpen(true);
   }
 
-  const getAll = async ()=>{
-    let response = await axios.get(`http://localhost:8080/api/v1/getAllApprenants`);
+  const getAllApprenants = async ()=>{
+    let response = await axios.get(`http://localhost:8080/api/apprenant/getAllApprenants`);
     return response.data;
   }
 
-  const {data, status} = useQuery("getAllApprenants", getAll);
+  const {data, status} = useQuery("getAllApprenants", getAllApprenants);
 
   if(status === "loading")
   {
@@ -30,7 +39,7 @@ const Home = () => {
           number={5}
           diameter={40}
           borderWidth={1}
-          duration={300}
+          duration={5}
           activeColor="#1d4ed8"
           borderColor="white"
           borderRadius="50%"
@@ -52,16 +61,20 @@ const Home = () => {
           {
             data.map((apprenant, index)=>{
               return(
-                <button onClick={clickHandler} key={index}>
+                <button onClick={()=>clickHandler(apprenant)} key={index}>
                   <User apprenant={apprenant} />
                 </button>
-                );
-              })
-            }
+              );
+            })
+          }
         </div>
       </div>
 
-      <Modal stateModal={isOpen} onClose={()=>{setIsOpen(false)}} />
+      <Modal
+        stateModal={isOpen}
+        onClose={()=>{setIsOpen(false)}}
+        apprenant={obj}
+      />
 
       <div className="xl:absolute xl:top-96 xl:left-12 xl:mt-72 xl:-z-30">
         <img src={undraw1} width="500" height="500" />
