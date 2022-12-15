@@ -1,6 +1,6 @@
 import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Login from "./views/login";
+import Login from "./views/Login";
 import Home from './views/Home';
 import { QueryClientProvider, QueryClient } from "react-query";
 

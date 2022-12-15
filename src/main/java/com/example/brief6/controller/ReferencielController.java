@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.sql.Ref;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @RestController
 @RequestMapping("/api/referenciel")
@@ -27,18 +28,24 @@ public class ReferencielController {
     @GetMapping(value = "/getAllReferenciels", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<String> getAllReferenciels() {
         Gson gson = new Gson();
-       // List<Referenciel> referenciels = referencielService.getAll();
-        Referenciel r2 = referencielService.findOneById(1);
-        List<Competence> c1 = r2.getCompetences();
-        String result = r2.getName();
-        SoutError.print("orange", r2.getName());
-        System.out.println(r2.getCompetences());
+//        List<Referenciel> referenciels = referencielService.getAll();
+//        Referenciel r2 = referencielService.findOneById(1);
+//        Set<Competence> c1 = r2.getCompetences();
+//        String result = r2.getName();
+//        SoutError.print("orange", r2.getName());
+//        System.out.println(r2.getCompetences());
        /* for(Referenciel ref: referenciels)
         {
             System.out.println(ref.toString());
         }*/
 
        // int result = referenciels.size();
-        return ResponseEntity.ok(gson.toJson(c1));
+        List<Referenciel> referenciels = referencielService.getAll();
+
+        for (Competence c: referenciels.get(0).getCompetences()) {
+            c.setReferenciel(null);
+        }
+
+        return ResponseEntity.ok(gson.toJson(referenciels));
     }
 }

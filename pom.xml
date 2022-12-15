@@ -19,6 +19,8 @@
       <scope>test</scope>
     </dependency>
 
+
+
     <!-- Add Spring framework and MVC dependencies -->
     <dependency>
       <groupId>org.springframework</groupId>
@@ -59,6 +61,11 @@
       <groupId>mysql</groupId>
       <artifactId>mysql-connector-java</artifactId>
       <version>8.0.30</version>
+    </dependency>
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <version>1.18.24</version>
     </dependency>
   </dependencies>
   <build>
